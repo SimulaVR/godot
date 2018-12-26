@@ -1734,6 +1734,7 @@ void OS_X11::handle_key_event(XKeyEvent *p_event, bool p_echo) {
 		keycode -= 'a' - 'A';
 
 	k->set_scancode(keycode);
+	k->set_raw_keycode(xkeyevent->keycode);
 	k->set_unicode(unicode);
 	k->set_echo(p_echo);
 

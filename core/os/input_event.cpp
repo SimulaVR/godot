@@ -345,8 +345,8 @@ void InputEventKey::_bind_methods() {
 	ClassDB::bind_method(D_METHOD("set_unicode", "unicode"), &InputEventKey::set_unicode);
 	ClassDB::bind_method(D_METHOD("get_unicode"), &InputEventKey::get_unicode);
 
-	ClassDB::bind_method(D_METHOD("set_raw_keycode", "unicode"), &InputEventKey::set_raw_keycode);
-	ClassDB::bind_method(D_METHOD("geet_raw_keycode"), &InputEventKey::get_raw_keycode);
+	ClassDB::bind_method(D_METHOD("set_raw_keycode", "raw_keycode"), &InputEventKey::set_raw_keycode);
+	ClassDB::bind_method(D_METHOD("get_raw_keycode"), &InputEventKey::get_raw_keycode);
 
 	ClassDB::bind_method(D_METHOD("set_echo", "echo"), &InputEventKey::set_echo);
 
@@ -355,6 +355,7 @@ void InputEventKey::_bind_methods() {
 	ADD_PROPERTY(PropertyInfo(Variant::BOOL, "pressed"), "set_pressed", "is_pressed");
 	ADD_PROPERTY(PropertyInfo(Variant::INT, "scancode"), "set_scancode", "get_scancode");
 	ADD_PROPERTY(PropertyInfo(Variant::INT, "unicode"), "set_unicode", "get_unicode");
+	ADD_PROPERTY(PropertyInfo(Variant::INT, "raw_keycode"), "set_raw_keycode", "get_raw_keycode");
 	ADD_PROPERTY(PropertyInfo(Variant::INT, "echo"), "set_echo", "is_echo");
 }
 
