@@ -250,6 +250,15 @@ uint32_t InputEventKey::get_unicode() const {
 	return unicode;
 }
 
+void InputEventKey::set_raw_keycode(uint32_t p_raw_keycode) {
+
+	raw_keycode = p_raw_keycode;
+}
+uint32_t InputEventKey::get_raw_keycode() const {
+
+	return raw_keycode;
+}
+
 void InputEventKey::set_echo(bool p_enable) {
 
 	echo = p_enable;
@@ -336,6 +345,9 @@ void InputEventKey::_bind_methods() {
 	ClassDB::bind_method(D_METHOD("set_unicode", "unicode"), &InputEventKey::set_unicode);
 	ClassDB::bind_method(D_METHOD("get_unicode"), &InputEventKey::get_unicode);
 
+	ClassDB::bind_method(D_METHOD("set_raw_keycode", "unicode"), &InputEventKey::set_raw_keycode);
+	ClassDB::bind_method(D_METHOD("geet_raw_keycode"), &InputEventKey::get_raw_keycode);
+
 	ClassDB::bind_method(D_METHOD("set_echo", "echo"), &InputEventKey::set_echo);
 
 	ClassDB::bind_method(D_METHOD("get_scancode_with_modifiers"), &InputEventKey::get_scancode_with_modifiers);
@@ -352,6 +364,7 @@ InputEventKey::InputEventKey() {
 	scancode = 0;
 	unicode = 0; ///unicode
 	echo = false;
+	raw_keycode = 0;
 }
 
 ////////////////////////////////////////

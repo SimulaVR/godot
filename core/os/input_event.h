@@ -242,6 +242,7 @@ class InputEventKey : public InputEventWithModifiers {
 
 	uint32_t scancode; ///< check keyboard.h , KeyCode enum, without modifier masks
 	uint32_t unicode; ///unicode
+		uint32_t raw_keycode; ///the raw, OS passed keycode
 
 	bool echo; /// true if this is an echo key
 
@@ -257,6 +258,9 @@ public:
 
 	void set_unicode(uint32_t p_unicode);
 	uint32_t get_unicode() const;
+
+	void set_raw_keycode(uint32_t p_unicode);
+	uint32_t get_raw_keycode() const;
 
 	void set_echo(bool p_enable);
 	virtual bool is_echo() const;

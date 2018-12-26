@@ -1617,6 +1617,8 @@ void OS_X11::handle_key_event(XKeyEvent *p_event, bool p_echo) {
 
 				k->set_echo(false);
 
+				k->set_raw_keycode(xkeyevent->keycode);
+
 				if (k->get_scancode() == KEY_BACKTAB) {
 					//make it consistent across platforms.
 					k->set_scancode(KEY_TAB);
