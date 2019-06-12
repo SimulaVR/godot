@@ -2682,7 +2682,8 @@ void RasterizerSceneGLES2::render_scene(const Transform &p_cam_transform, const 
 	glBlendEquation(GL_FUNC_ADD);
 	glBlendFunc(GL_ONE, GL_ONE_MINUS_SRC_ALPHA);
 
-	render_list.sort_by_depth(true);
+	//render_list.sort_by_depth(true);
+  render_list.sort_by_reverse_depth_and_priority(true); //George: Fix depth rendering issue
 
 	_render_render_list(&render_list.elements[render_list.max_elements - render_list.alpha_element_count], render_list.alpha_element_count, p_cam_transform, p_cam_projection, p_shadow_atlas, env, env_radiance_tex, 0.0, 0.0, false, true, false);
 
