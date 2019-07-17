@@ -162,6 +162,13 @@ void OS_Unix::initialize_core() {
 	if (sigaction(SIGCHLD, &sa, 0) == -1) {
 		perror("ERROR sigaction() failed:");
 	}
+
+        sigset_t mask;
+        sigemptyset(&mask);
+        sigaddset(&mask, SIGUSR1);
+        sigprocmask(SIG_BLOCK, &mask, NULL);
+
+
 }
 
 void OS_Unix::finalize_core() {
