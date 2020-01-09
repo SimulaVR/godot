@@ -39,6 +39,9 @@
 #define glClearDepth glClearDepthf
 #endif
 
+#define _GL_TEXTURE_MAX_ANISOTROPY_EXT 0x84FE
+
+
 static _FORCE_INLINE_ void store_transform2d(const Transform2D &p_mtx, float *p_array) {
 
 	p_array[0] = p_mtx.elements[0][0];
@@ -233,6 +236,11 @@ RasterizerStorageGLES3::Texture *RasterizerCanvasGLES3::_bind_canvas_texture(con
 
 			glActiveTexture(GL_TEXTURE0);
 			glBindTexture(GL_TEXTURE_2D, texture->tex_id);
+
+			glTexParameteri(texture->target, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_LINEAR);
+			glTexParameteri(texture->target, GL_TEXTURE_MAG_FILTER, GL_LINEAR_MIPMAP_LINEAR);
+			glTexParameterf(texture->target, _GL_TEXTURE_MAX_ANISOTROPY_EXT, 16.0f);
+
 			state.current_tex = p_texture;
 			state.current_tex_ptr = texture;
 
@@ -695,6 +703,8 @@ void RasterizerCanvasGLES3::_canvas_item_render_commands(Item *p_item, Item *cur
 					state.canvas_shader.set_uniform(CanvasShaderGLES3::DST_RECT, Color(dst_rect.position.x, dst_rect.position.y, dst_rect.size.x, dst_rect.size.y));
 					state.canvas_shader.set_uniform(CanvasShaderGLES3::SRC_RECT, Color(src_rect.position.x, src_rect.position.y, src_rect.size.x, src_rect.size.y));
 					state.canvas_shader.set_uniform(CanvasShaderGLES3::CLIP_RECT_UV, (rect->flags & CANVAS_RECT_CLIP_UV) ? true : false);
+
+
 
 					glDrawArrays(GL_TRIANGLE_FAN, 0, 4);
 
