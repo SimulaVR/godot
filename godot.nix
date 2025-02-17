@@ -68,7 +68,7 @@ in stdenv.mkDerivation rec {
 
   buildInputs = [
     libX11 libXcursor libXinerama libXrandr libXrender
-    libXi libXext libXfixes freetype openssl alsaLib libpulseaudio
+    libXi libXext libXfixes freetype openssl alsa-lib libpulseaudio
     libGLU zlib yasm
     wlroots xwayland-dev wayland-protocols-dev libglvnd libGL mesa libxkbcommon freetype fontconfig xorg.xorgproto xorg.libX11 xorg.libXt xorg.libXft xorg.libXext xorg.libSM xorg.libICE eudev xvfb-run nixGLPkg xorg.libpthreadstubs libxcb-dev wayland-dev
     libxcb-errors
