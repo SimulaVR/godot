@@ -1,7 +1,7 @@
 { stdenv, lib, fetchFromGitHub, scons, libX11, libXcursor
 , libXinerama, libXrandr, libXrender, libpulseaudio ? null
 , libXi ? null, libXext, libXfixes, freetype, openssl
-, alsaLib, libGLU, zlib, yasm ? null, xwayland, wayland-protocols, libglvnd, libGL, mesa, pixman, libxkbcommon, fontconfig, eudev, callPackage, devBuild ? false, onNixOS ? false, pkgs, xorg, wayland
+, alsa-lib, libGLU, zlib, yasm ? null, xwayland, wayland-protocols, libglvnd, libGL, mesa, pixman, libxkbcommon, fontconfig, eudev, callPackage, devBuild ? false, onNixOS ? false, pkgs, xorg, wayland
 , pkg-config, autoreconfHook, libbsd, python310, dbus, libv4l, wayland-scanner
 }:
 
