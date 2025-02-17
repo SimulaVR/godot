@@ -1,7 +1,7 @@
 { stdenv, lib, fetchFromGitHub, scons, libX11, libXcursor
 , libXinerama, libXrandr, libXrender, libpulseaudio ? null
 , libXi ? null, libXext, libXfixes, freetype, openssl
-, alsaLib, libGLU, zlib, yasm ? null, xwayland, wayland-protocols, libglvnd, libGL, mesa, pixman, libxkbcommon, fontconfig, eudev, callPackage, devBuild ? false, onNixOS ? false, pkgs, xorg, wayland
+, alsa-lib, libGLU, zlib, yasm ? null, xwayland, wayland-protocols, libglvnd, libGL, mesa, pixman, libxkbcommon, fontconfig, eudev, callPackage, devBuild ? false, onNixOS ? false, pkgs, xorg, wayland
 , pkg-config, autoreconfHook, libbsd, python310, dbus, libv4l, wayland-scanner
 }:
 
@@ -68,7 +68,7 @@ in stdenv.mkDerivation rec {
 
   buildInputs = [
     libX11 libXcursor libXinerama libXrandr libXrender
-    libXi libXext libXfixes freetype openssl alsaLib libpulseaudio
+    libXi libXext libXfixes freetype openssl alsa-lib libpulseaudio
     libGLU zlib yasm
     wlroots xwayland-dev wayland-protocols-dev libglvnd libGL mesa libxkbcommon freetype fontconfig xorg.xorgproto xorg.libX11 xorg.libXt xorg.libXft xorg.libXext xorg.libSM xorg.libICE eudev xvfb-run nixGLPkg xorg.libpthreadstubs libxcb-dev wayland-dev
     libxcb-errors
