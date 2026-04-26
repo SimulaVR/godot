@@ -6,7 +6,7 @@
 		"singleton": true,
 		"singleton_name": "GlobalConstants",
 		"instanciable": false,
-		"is_reference": true,
+		"is_reference": false,
 		"constants": {
 			"BUTTON_LEFT": 1,
 			"BUTTON_MASK_LEFT": 1,
@@ -68704,448 +68704,6 @@
 					{
 						"name": "instance",
 						"type": "Object",
-						"has_default_value": false,
-						"default_value": ""
-					}
-				]
-			}
-		],
-		"enums": [
-		]
-	},
-	{
-		"name": "GDLMSensor",
-		"base_class": "Spatial",
-		"api_type": "core",
-		"singleton": false,
-		"singleton_name": "",
-		"instanciable": true,
-		"is_reference": false,
-		"constants": {
-		},
-		"properties": [
-			{
-				"name": "arvr",
-				"type": "bool",
-				"getter": "get_arvr",
-				"setter": "set_arvr",
-				"index": -1
-			},
-			{
-				"name": "keep_hands_for_frames",
-				"type": "int",
-				"getter": "get_keep_frames",
-				"setter": "set_keep_frames",
-				"index": -1
-			},
-			{
-				"name": "keep_last_hand",
-				"type": "bool",
-				"getter": "get_keep_last_hand",
-				"setter": "set_keep_last_hand",
-				"index": -1
-			},
-			{
-				"name": "left_hand_scene",
-				"type": "String",
-				"getter": "get_left_hand_scene",
-				"setter": "set_left_hand_scene",
-				"index": -1
-			},
-			{
-				"name": "right_hand_scene",
-				"type": "String",
-				"getter": "get_right_hand_scene",
-				"setter": "set_right_hand_scene",
-				"index": -1
-			},
-			{
-				"name": "smooth_factor",
-				"type": "int",
-				"getter": "get_smooth_factor",
-				"setter": "set_smooth_factor",
-				"index": -1
-			}
-		],
-		"signals": [
-			{
-				"name": "about_to_remove_hand",
-				"arguments": [
-					{
-						"name": "hand",
-						"type": "SceneTree",
-						"has_default_value": false,
-						"default_value": ""
-					}
-				]
-			},
-			{
-				"name": "new_hand",
-				"arguments": [
-					{
-						"name": "hand",
-						"type": "SceneTree",
-						"has_default_value": false,
-						"default_value": ""
-					},
-					{
-						"name": "hand_type",
-						"type": "int",
-						"has_default_value": false,
-						"default_value": ""
-					}
-				]
-			}
-		],
-		"methods": [
-			{
-				"name": "get_arvr",
-				"return_type": "bool",
-				"is_editor": false,
-				"is_noscript": false,
-				"is_const": true,
-				"is_reverse": false,
-				"is_virtual": false,
-				"has_varargs": false,
-				"is_from_script": false,
-				"arguments": [
-				]
-			},
-			{
-				"name": "get_finger_bone_name",
-				"return_type": "String",
-				"is_editor": false,
-				"is_noscript": false,
-				"is_const": false,
-				"is_reverse": false,
-				"is_virtual": false,
-				"has_varargs": false,
-				"is_from_script": false,
-				"arguments": [
-					{
-						"name": "arg0",
-						"type": "int",
-						"has_default_value": false,
-						"default_value": ""
-					}
-				]
-			},
-			{
-				"name": "get_finger_name",
-				"return_type": "String",
-				"is_editor": false,
-				"is_noscript": false,
-				"is_const": false,
-				"is_reverse": false,
-				"is_virtual": false,
-				"has_varargs": false,
-				"is_from_script": false,
-				"arguments": [
-					{
-						"name": "arg0",
-						"type": "int",
-						"has_default_value": false,
-						"default_value": ""
-					}
-				]
-			},
-			{
-				"name": "get_hands_scale_factor",
-				"return_type": "float",
-				"is_editor": false,
-				"is_noscript": false,
-				"is_const": false,
-				"is_reverse": false,
-				"is_virtual": false,
-				"has_varargs": false,
-				"is_from_script": false,
-				"arguments": [
-				]
-			},
-			{
-				"name": "get_hmd_to_leap_motion",
-				"return_type": "Transform",
-				"is_editor": false,
-				"is_noscript": false,
-				"is_const": true,
-				"is_reverse": false,
-				"is_virtual": false,
-				"has_varargs": false,
-				"is_from_script": false,
-				"arguments": [
-				]
-			},
-			{
-				"name": "get_is_connected",
-				"return_type": "bool",
-				"is_editor": false,
-				"is_noscript": false,
-				"is_const": false,
-				"is_reverse": false,
-				"is_virtual": false,
-				"has_varargs": false,
-				"is_from_script": false,
-				"arguments": [
-				]
-			},
-			{
-				"name": "get_is_grabbed_left",
-				"return_type": "bool",
-				"is_editor": false,
-				"is_noscript": false,
-				"is_const": false,
-				"is_reverse": false,
-				"is_virtual": false,
-				"has_varargs": false,
-				"is_from_script": false,
-				"arguments": [
-				]
-			},
-			{
-				"name": "get_is_grabbed_right",
-				"return_type": "bool",
-				"is_editor": false,
-				"is_noscript": false,
-				"is_const": false,
-				"is_reverse": false,
-				"is_virtual": false,
-				"has_varargs": false,
-				"is_from_script": false,
-				"arguments": [
-				]
-			},
-			{
-				"name": "get_is_pinched_left",
-				"return_type": "bool",
-				"is_editor": false,
-				"is_noscript": false,
-				"is_const": false,
-				"is_reverse": false,
-				"is_virtual": false,
-				"has_varargs": false,
-				"is_from_script": false,
-				"arguments": [
-				]
-			},
-			{
-				"name": "get_is_pinched_right",
-				"return_type": "bool",
-				"is_editor": false,
-				"is_noscript": false,
-				"is_const": false,
-				"is_reverse": false,
-				"is_virtual": false,
-				"has_varargs": false,
-				"is_from_script": false,
-				"arguments": [
-				]
-			},
-			{
-				"name": "get_is_running",
-				"return_type": "bool",
-				"is_editor": false,
-				"is_noscript": false,
-				"is_const": false,
-				"is_reverse": false,
-				"is_virtual": false,
-				"has_varargs": false,
-				"is_from_script": false,
-				"arguments": [
-				]
-			},
-			{
-				"name": "get_keep_frames",
-				"return_type": "int",
-				"is_editor": false,
-				"is_noscript": false,
-				"is_const": true,
-				"is_reverse": false,
-				"is_virtual": false,
-				"has_varargs": false,
-				"is_from_script": false,
-				"arguments": [
-				]
-			},
-			{
-				"name": "get_keep_last_hand",
-				"return_type": "bool",
-				"is_editor": false,
-				"is_noscript": false,
-				"is_const": true,
-				"is_reverse": false,
-				"is_virtual": false,
-				"has_varargs": false,
-				"is_from_script": false,
-				"arguments": [
-				]
-			},
-			{
-				"name": "get_left_hand_scene",
-				"return_type": "String",
-				"is_editor": false,
-				"is_noscript": false,
-				"is_const": true,
-				"is_reverse": false,
-				"is_virtual": false,
-				"has_varargs": false,
-				"is_from_script": false,
-				"arguments": [
-				]
-			},
-			{
-				"name": "get_right_hand_scene",
-				"return_type": "String",
-				"is_editor": false,
-				"is_noscript": false,
-				"is_const": true,
-				"is_reverse": false,
-				"is_virtual": false,
-				"has_varargs": false,
-				"is_from_script": false,
-				"arguments": [
-				]
-			},
-			{
-				"name": "get_smooth_factor",
-				"return_type": "float",
-				"is_editor": false,
-				"is_noscript": false,
-				"is_const": true,
-				"is_reverse": false,
-				"is_virtual": false,
-				"has_varargs": false,
-				"is_from_script": false,
-				"arguments": [
-				]
-			},
-			{
-				"name": "set_arvr",
-				"return_type": "void",
-				"is_editor": false,
-				"is_noscript": false,
-				"is_const": false,
-				"is_reverse": false,
-				"is_virtual": false,
-				"has_varargs": false,
-				"is_from_script": false,
-				"arguments": [
-					{
-						"name": "arvr",
-						"type": "bool",
-						"has_default_value": false,
-						"default_value": ""
-					}
-				]
-			},
-			{
-				"name": "set_hmd_to_leap_motion",
-				"return_type": "void",
-				"is_editor": false,
-				"is_noscript": false,
-				"is_const": false,
-				"is_reverse": false,
-				"is_virtual": false,
-				"has_varargs": false,
-				"is_from_script": false,
-				"arguments": [
-					{
-						"name": "hmd_to_leap_motion",
-						"type": "Transform",
-						"has_default_value": false,
-						"default_value": ""
-					}
-				]
-			},
-			{
-				"name": "set_keep_frames",
-				"return_type": "void",
-				"is_editor": false,
-				"is_noscript": false,
-				"is_const": false,
-				"is_reverse": false,
-				"is_virtual": false,
-				"has_varargs": false,
-				"is_from_script": false,
-				"arguments": [
-					{
-						"name": "keep_frames",
-						"type": "int",
-						"has_default_value": false,
-						"default_value": ""
-					}
-				]
-			},
-			{
-				"name": "set_keep_last_hand",
-				"return_type": "void",
-				"is_editor": false,
-				"is_noscript": false,
-				"is_const": false,
-				"is_reverse": false,
-				"is_virtual": false,
-				"has_varargs": false,
-				"is_from_script": false,
-				"arguments": [
-					{
-						"name": "keep_last_hand",
-						"type": "bool",
-						"has_default_value": false,
-						"default_value": ""
-					}
-				]
-			},
-			{
-				"name": "set_left_hand_scene",
-				"return_type": "void",
-				"is_editor": false,
-				"is_noscript": false,
-				"is_const": false,
-				"is_reverse": false,
-				"is_virtual": false,
-				"has_varargs": false,
-				"is_from_script": false,
-				"arguments": [
-					{
-						"name": "left_hand_scene",
-						"type": "String",
-						"has_default_value": false,
-						"default_value": ""
-					}
-				]
-			},
-			{
-				"name": "set_right_hand_scene",
-				"return_type": "void",
-				"is_editor": false,
-				"is_noscript": false,
-				"is_const": false,
-				"is_reverse": false,
-				"is_virtual": false,
-				"has_varargs": false,
-				"is_from_script": false,
-				"arguments": [
-					{
-						"name": "right_hand_scene",
-						"type": "String",
-						"has_default_value": false,
-						"default_value": ""
-					}
-				]
-			},
-			{
-				"name": "set_smooth_factor",
-				"return_type": "void",
-				"is_editor": false,
-				"is_noscript": false,
-				"is_const": false,
-				"is_reverse": false,
-				"is_virtual": false,
-				"has_varargs": false,
-				"is_from_script": false,
-				"arguments": [
-					{
-						"name": "smooth_factor",
-						"type": "float",
 						"has_default_value": false,
 						"default_value": ""
 					}
@@ -200637,6 +200195,19 @@
 				]
 			},
 			{
+				"name": "has_parent",
+				"return_type": "bool",
+				"is_editor": false,
+				"is_noscript": false,
+				"is_const": true,
+				"is_reverse": false,
+				"is_virtual": false,
+				"has_varargs": false,
+				"is_from_script": false,
+				"arguments": [
+				]
+			},
+			{
 				"name": "is_valid",
 				"return_type": "bool",
 				"is_editor": false,
@@ -200828,6 +200399,19 @@
 		],
 		"methods": [
 			{
+				"name": "get_geometry",
+				"return_type": "Rect2",
+				"is_editor": false,
+				"is_noscript": false,
+				"is_const": false,
+				"is_reverse": false,
+				"is_virtual": false,
+				"has_varargs": false,
+				"is_from_script": false,
+				"arguments": [
+				]
+			},
+			{
 				"name": "get_height",
 				"return_type": "int",
 				"is_editor": false,
@@ -201012,8 +200596,8 @@
 				"name": "new_popup",
 				"arguments": [
 					{
-						"name": "xdg_popup",
-						"type": "WlrXdgPopup",
+						"name": "xdg_surface",
+						"type": "WlrXdgSurface",
 						"has_default_value": false,
 						"default_value": ""
 					}
@@ -201407,6 +200991,32 @@
 			{
 				"name": "get_title",
 				"return_type": "String",
+				"is_editor": false,
+				"is_noscript": false,
+				"is_const": true,
+				"is_reverse": false,
+				"is_virtual": false,
+				"has_varargs": false,
+				"is_from_script": false,
+				"arguments": [
+				]
+			},
+			{
+				"name": "get_xdg_surface",
+				"return_type": "WlrXdgSurface",
+				"is_editor": false,
+				"is_noscript": false,
+				"is_const": true,
+				"is_reverse": false,
+				"is_virtual": false,
+				"has_varargs": false,
+				"is_from_script": false,
+				"arguments": [
+				]
+			},
+			{
+				"name": "has_parent",
+				"return_type": "bool",
 				"is_editor": false,
 				"is_noscript": false,
 				"is_const": true,
