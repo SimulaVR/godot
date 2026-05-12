@@ -198542,6 +198542,19 @@
 		"signals": [
 		],
 		"methods": [
+			{
+				"name": "get_live_object_dictionary",
+				"return_type": "Dictionary",
+				"is_editor": false,
+				"is_noscript": false,
+				"is_const": false,
+				"is_reverse": false,
+				"is_virtual": false,
+				"has_varargs": false,
+				"is_from_script": false,
+				"arguments": [
+				]
+			}
 		],
 		"enums": [
 		]
@@ -200091,6 +200104,19 @@
 				]
 			},
 			{
+				"name": "get_override_redirect",
+				"return_type": "bool",
+				"is_editor": false,
+				"is_noscript": false,
+				"is_const": true,
+				"is_reverse": false,
+				"is_virtual": false,
+				"has_varargs": false,
+				"is_from_script": false,
+				"arguments": [
+				]
+			},
+			{
 				"name": "get_parent",
 				"return_type": "WlrXWaylandSurface",
 				"is_editor": false,
@@ -200130,8 +200156,60 @@
 				]
 			},
 			{
+				"name": "get_surface_origin_x",
+				"return_type": "int",
+				"is_editor": false,
+				"is_noscript": false,
+				"is_const": true,
+				"is_reverse": false,
+				"is_virtual": false,
+				"has_varargs": false,
+				"is_from_script": false,
+				"arguments": [
+				]
+			},
+			{
+				"name": "get_surface_origin_y",
+				"return_type": "int",
+				"is_editor": false,
+				"is_noscript": false,
+				"is_const": true,
+				"is_reverse": false,
+				"is_virtual": false,
+				"has_varargs": false,
+				"is_from_script": false,
+				"arguments": [
+				]
+			},
+			{
 				"name": "get_title",
 				"return_type": "String",
+				"is_editor": false,
+				"is_noscript": false,
+				"is_const": true,
+				"is_reverse": false,
+				"is_virtual": false,
+				"has_varargs": false,
+				"is_from_script": false,
+				"arguments": [
+				]
+			},
+			{
+				"name": "get_visible_geometry_origin_x",
+				"return_type": "int",
+				"is_editor": false,
+				"is_noscript": false,
+				"is_const": true,
+				"is_reverse": false,
+				"is_virtual": false,
+				"has_varargs": false,
+				"is_from_script": false,
+				"arguments": [
+				]
+			},
+			{
+				"name": "get_visible_geometry_origin_y",
+				"return_type": "int",
 				"is_editor": false,
 				"is_noscript": false,
 				"is_const": true,
@@ -200169,32 +200247,6 @@
 				]
 			},
 			{
-				"name": "get_x",
-				"return_type": "int",
-				"is_editor": false,
-				"is_noscript": false,
-				"is_const": true,
-				"is_reverse": false,
-				"is_virtual": false,
-				"has_varargs": false,
-				"is_from_script": false,
-				"arguments": [
-				]
-			},
-			{
-				"name": "get_y",
-				"return_type": "int",
-				"is_editor": false,
-				"is_noscript": false,
-				"is_const": true,
-				"is_reverse": false,
-				"is_virtual": false,
-				"has_varargs": false,
-				"is_from_script": false,
-				"arguments": [
-				]
-			},
-			{
 				"name": "has_parent",
 				"return_type": "bool",
 				"is_editor": false,
@@ -200205,6 +200257,25 @@
 				"has_varargs": false,
 				"is_from_script": false,
 				"arguments": [
+				]
+			},
+			{
+				"name": "has_window_type_name",
+				"return_type": "bool",
+				"is_editor": false,
+				"is_noscript": false,
+				"is_const": true,
+				"is_reverse": false,
+				"is_virtual": false,
+				"has_varargs": false,
+				"is_from_script": false,
+				"arguments": [
+					{
+						"name": "type_name",
+						"type": "String",
+						"has_default_value": false,
+						"default_value": ""
+					}
 				]
 			},
 			{
@@ -200425,33 +200496,59 @@
 				]
 			},
 			{
+				"name": "get_surface_origin_x",
+				"return_type": "int",
+				"is_editor": false,
+				"is_noscript": false,
+				"is_const": false,
+				"is_reverse": false,
+				"is_virtual": false,
+				"has_varargs": false,
+				"is_from_script": false,
+				"arguments": [
+				]
+			},
+			{
+				"name": "get_surface_origin_y",
+				"return_type": "int",
+				"is_editor": false,
+				"is_noscript": false,
+				"is_const": false,
+				"is_reverse": false,
+				"is_virtual": false,
+				"has_varargs": false,
+				"is_from_script": false,
+				"arguments": [
+				]
+			},
+			{
+				"name": "get_visible_geometry_origin_x",
+				"return_type": "int",
+				"is_editor": false,
+				"is_noscript": false,
+				"is_const": false,
+				"is_reverse": false,
+				"is_virtual": false,
+				"has_varargs": false,
+				"is_from_script": false,
+				"arguments": [
+				]
+			},
+			{
+				"name": "get_visible_geometry_origin_y",
+				"return_type": "int",
+				"is_editor": false,
+				"is_noscript": false,
+				"is_const": false,
+				"is_reverse": false,
+				"is_virtual": false,
+				"has_varargs": false,
+				"is_from_script": false,
+				"arguments": [
+				]
+			},
+			{
 				"name": "get_width",
-				"return_type": "int",
-				"is_editor": false,
-				"is_noscript": false,
-				"is_const": false,
-				"is_reverse": false,
-				"is_virtual": false,
-				"has_varargs": false,
-				"is_from_script": false,
-				"arguments": [
-				]
-			},
-			{
-				"name": "get_x",
-				"return_type": "int",
-				"is_editor": false,
-				"is_noscript": false,
-				"is_const": false,
-				"is_reverse": false,
-				"is_virtual": false,
-				"has_varargs": false,
-				"is_from_script": false,
-				"arguments": [
-				]
-			},
-			{
-				"name": "get_y",
 				"return_type": "int",
 				"is_editor": false,
 				"is_noscript": false,
