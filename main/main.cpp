@@ -71,6 +71,18 @@
 #include "servers/register_server_types.h"
 #include "servers/visual_server_callbacks.h"
 
+#if defined(__linux__) || defined(__APPLE__)
+#include <dlfcn.h>
+#ifndef RTLD_DEFAULT
+#define RTLD_DEFAULT ((void *)0)
+#endif
+#endif
+
+#if defined(__linux__)
+#include <stdio.h>
+#include <string.h>
+#endif
+
 #ifdef TOOLS_ENABLED
 #include "editor/doc/doc_data.h"
 #include "editor/doc/doc_data_class_path.gen.h"
@@ -108,6 +120,102 @@ static VisualServerCallbacks *visual_server_callbacks = nullptr;
 
 // We error out if setup2() doesn't turn this true
 static bool _start_success = false;
+
+#if defined(__linux__) || defined(__APPLE__)
+typedef void (*MarkGodotFrameStartNowFn)(void);
+
+static const char *SIMULA_OPENXR_MONADO_HUD_MARK_FRAME_START_NOW_SYMBOL =
+		"simula_openxr_debug_monado_hud_mark_godot_frame_start_now";
+
+static MarkGodotFrameStartNowFn mark_godot_frame_start_now_fn_from_symbol(void *p_symbol) {
+	return reinterpret_cast<MarkGodotFrameStartNowFn>(p_symbol);
+}
+
+static MarkGodotFrameStartNowFn resolve_mark_godot_frame_start_now_from_default_scope() {
+	return mark_godot_frame_start_now_fn_from_symbol(
+			dlsym(RTLD_DEFAULT, SIMULA_OPENXR_MONADO_HUD_MARK_FRAME_START_NOW_SYMBOL));
+}
+#endif
+
+#if defined(__linux__) && defined(RTLD_NOLOAD)
+static const char *SIMULA_OPENXR_MONADO_HUD_LIBRARY_NAME = "libgodot_openxr.so";
+
+static void simula_strip_deleted_suffix(char *p_path) {
+	static const char *deleted_suffix = " (deleted)";
+	const size_t path_length = strlen(p_path);
+	const size_t suffix_length = strlen(deleted_suffix);
+
+	if (path_length >= suffix_length &&
+			strcmp(p_path + path_length - suffix_length, deleted_suffix) == 0) {
+		p_path[path_length - suffix_length] = '\0';
+	}
+}
+
+static MarkGodotFrameStartNowFn resolve_mark_godot_frame_start_now_from_loaded_openxr_library() {
+	FILE *maps = fopen("/proc/self/maps", "r");
+	if (maps == nullptr) {
+		return nullptr;
+	}
+
+	char line[4096];
+	while (fgets(line, sizeof(line), maps) != nullptr) {
+		char *path = strchr(line, '/');
+		if (path == nullptr || strstr(path, SIMULA_OPENXR_MONADO_HUD_LIBRARY_NAME) == nullptr) {
+			continue;
+		}
+
+		path[strcspn(path, "\n")] = '\0';
+		simula_strip_deleted_suffix(path);
+
+		void *handle = dlopen(path, RTLD_NOW | RTLD_NOLOAD);
+		if (handle == nullptr) {
+			continue;
+		}
+
+		void *symbol = dlsym(handle, SIMULA_OPENXR_MONADO_HUD_MARK_FRAME_START_NOW_SYMBOL);
+		dlclose(handle);
+
+		if (symbol != nullptr) {
+			fclose(maps);
+			return mark_godot_frame_start_now_fn_from_symbol(symbol);
+		}
+	}
+
+	fclose(maps);
+	return nullptr;
+}
+#endif
+
+static void simula_mark_monado_hud_godot_frame_start() {
+#if defined(__linux__) || defined(__APPLE__)
+	static MarkGodotFrameStartNowFn mark_frame_start_now = nullptr;
+	static uint32_t frames_until_resolve_retry = 0;
+
+	if (mark_frame_start_now == nullptr) {
+		if (frames_until_resolve_retry > 0) {
+			frames_until_resolve_retry--;
+			return;
+		}
+
+		mark_frame_start_now = resolve_mark_godot_frame_start_now_from_default_scope();
+
+#if defined(__linux__) && defined(RTLD_NOLOAD)
+		if (mark_frame_start_now == nullptr) {
+			mark_frame_start_now = resolve_mark_godot_frame_start_now_from_loaded_openxr_library();
+		}
+#endif
+
+		if (mark_frame_start_now == nullptr) {
+			frames_until_resolve_retry = 60;
+			return;
+		}
+	}
+
+	if (mark_frame_start_now != nullptr) {
+		mark_frame_start_now();
+	}
+#endif
+}
 
 // Drivers
 
@@ -2085,6 +2193,8 @@ static uint64_t frame_delta_sync_time = 0;
 bool Main::iteration() {
 	//for now do not error on this
 	//ERR_FAIL_COND_V(iterating, false);
+
+	simula_mark_monado_hud_godot_frame_start();
 
 	iterating++;
 
