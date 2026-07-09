@@ -23,7 +23,7 @@
     "flake-parts_2": {
       "inputs": {
         "nixpkgs-lib": [
-          "wlroots-flake",
+          "wlroots",
           "nixpkgs"
         ]
       },
@@ -41,34 +41,34 @@
         "type": "github"
       }
     },
-    "libxcb-errors": {
-      "flake": false,
+    "nixpkgs": {
       "locked": {
-        "lastModified": 1732504353,
-        "narHash": "sha256-LPNRkLQSTPkCRIc9lhHYIvQs8ags3GpGehCWLY5qvJw=",
-        "owner": "SimulaVR",
-        "repo": "libxcb-errors",
-        "rev": "cb26a7dc442b0bb37f8648986350291d3d45a47a",
+        "lastModified": 1771207753,
+        "narHash": "sha256-b9uG8yN50DRQ6A7JdZBfzq718ryYrlmGgqkRm9OOwCE=",
+        "owner": "nixos",
+        "repo": "nixpkgs",
+        "rev": "d1c15b7d5806069da59e819999d70e1cec0760bf",
         "type": "github"
       },
       "original": {
-        "owner": "SimulaVR",
-        "repo": "libxcb-errors",
+        "owner": "nixos",
+        "ref": "nixpkgs-unstable",
+        "repo": "nixpkgs",
         "type": "github"
       }
     },
-    "nixpkgs": {
+    "nixpkgs_2": {
       "locked": {
-        "lastModified": 1770464364,
-        "narHash": "sha256-z5NJPSBwsLf/OfD8WTmh79tlSU8XgIbwmk6qB1/TFzY=",
+        "lastModified": 1771207753,
+        "narHash": "sha256-b9uG8yN50DRQ6A7JdZBfzq718ryYrlmGgqkRm9OOwCE=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "23d72dabcb3b12469f57b37170fcbc1789bd7457",
+        "rev": "d1c15b7d5806069da59e819999d70e1cec0760bf",
         "type": "github"
       },
       "original": {
         "owner": "nixos",
-        "ref": "nixos-25.11",
+        "ref": "nixpkgs-unstable",
         "repo": "nixpkgs",
         "type": "github"
       }
@@ -79,7 +79,7 @@
         "nixpkgs": "nixpkgs",
         "systems": "systems",
         "treefmt-nix": "treefmt-nix",
-        "wlroots-flake": "wlroots-flake"
+        "wlroots": "wlroots"
       }
     },
     "systems": {
@@ -132,30 +132,46 @@
         "type": "github"
       }
     },
-    "wlroots-flake": {
+    "treefmt-nix_2": {
       "inputs": {
-        "flake-parts": "flake-parts_2",
-        "libxcb-errors": "libxcb-errors",
         "nixpkgs": [
+          "wlroots",
           "nixpkgs"
-        ],
-        "systems": "systems_2"
+        ]
       },
       "locked": {
-        "lastModified": 1770499572,
-        "narHash": "sha256-VzIH7zAGq7JIudl1z1MuQqOcSJRjOLzL0x9AwwAuNow=",
-        "ref": "refs/heads/simula",
-        "rev": "e1529945c8b87f1d65c48e1b036eb54b0b707c67",
-        "revCount": 3592,
-        "submodules": true,
-        "type": "git",
-        "url": "https://github.com/SimulaVR/wlroots"
+        "lastModified": 1770228511,
+        "narHash": "sha256-wQ6NJSuFqAEmIg2VMnLdCnUc0b7vslUohqqGGD+Fyxk=",
+        "owner": "numtide",
+        "repo": "treefmt-nix",
+        "rev": "337a4fe074be1042a35086f15481d763b8ddc0e7",
+        "type": "github"
       },
       "original": {
-        "rev": "e1529945c8b87f1d65c48e1b036eb54b0b707c67",
-        "submodules": true,
-        "type": "git",
-        "url": "https://github.com/SimulaVR/wlroots"
+        "owner": "numtide",
+        "repo": "treefmt-nix",
+        "type": "github"
+      }
+    },
+    "wlroots": {
+      "inputs": {
+        "flake-parts": "flake-parts_2",
+        "nixpkgs": "nixpkgs_2",
+        "systems": "systems_2",
+        "treefmt-nix": "treefmt-nix_2"
+      },
+      "locked": {
+        "lastModified": 1771822792,
+        "narHash": "sha256-OVI3AkAHDRn3nmztY79mT5BS8oelT/bZz7rFxL2LZ4Y=",
+        "owner": "SimulaVR",
+        "repo": "wlroots",
+        "rev": "9f8f9455a5785a43d538e5df68a27d1089daddec",
+        "type": "github"
+      },
+      "original": {
+        "owner": "SimulaVR",
+        "repo": "wlroots",
+        "type": "github"
       }
     }
   },

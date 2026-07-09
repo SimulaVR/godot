@@ -1,6 +1,6 @@
 {
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-25.11";
+    nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
     systems.url = "github:nix-systems/default-linux";
     flake-parts = {
       url = "github:hercules-ci/flake-parts";
@@ -10,11 +10,7 @@
       url = "github:numtide/treefmt-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    wlroots-flake = {
-      url = "git+https://github.com/SimulaVR/wlroots?rev=e1529945c8b87f1d65c48e1b036eb54b0b707c67&submodules=1";
-      inputs.nixpkgs.follows = "nixpkgs";
-      flake = true;
-    };
+    wlroots.url = "github:SimulaVR/wlroots";
   };
 
   outputs =
@@ -40,40 +36,7 @@
             rev = "88cbe52ee28219fc77194a1c87d71de3ce0be127";
             hash = "sha256-CLygKinJGAxFMQme/+UIX6smqgP1aaf5VBhPZCIbH2g=";
           };
-          wlroots = inputs.wlroots-flake.packages.${system}.default;
-
-          libxcb-errors = pkgs.stdenv.mkDerivation {
-            pname = "libxcb-errors";
-            version = "0.0.0";
-            src = pkgs.fetchFromGitHub {
-              owner = "SimulaVR";
-              repo = "libxcb-errors";
-              rev = "cb26a7dc442b0bb37f8648986350291d3d45a47a";
-              hash = "sha256-LPNRkLQSTPkCRIc9lhHYIvQs8ags3GpGehCWLY5qvJw=";
-            };
-
-            nativeBuildInputs = [
-              pkgs.pkg-config
-              pkgs.python310
-              pkgs.autoreconfHook
-            ];
-
-            buildInputs = [
-              pkgs.xorg.libxcb
-              pkgs.xorg.libXau
-              pkgs.xorg.libXdmcp
-              pkgs.libbsd
-              pkgs.xorg.utilmacros
-              pkgs.xorg.xcbproto
-            ];
-
-            meta = {
-              description = "Allow XCB errors to print less opaquely";
-              homepage = "https://github.com/SimulaVR/libxcb-errors";
-              license = lib.licenses.mit;
-              platforms = lib.platforms.linux;
-            };
-          };
+          wlroots = inputs.wlroots.packages.${system}.default;
 
           godot = pkgs.stdenv.mkDerivation {
             pname = "godot";
@@ -134,7 +97,8 @@
           };
 
           tools.lsp = [
-            pkgs.nil
+            pkgs.nil # Nix
+            pkgs.clang-tools # C / C++
           ];
           tools.build = [
             pkgs.just
@@ -146,13 +110,13 @@
             pkgs.autoPatchelfHook
           ];
           buildInputs = [
-            pkgs.xorg.libxcb
-            pkgs.xorg.libX11
-            pkgs.xorg.libXcursor
-            pkgs.xorg.libXinerama
-            pkgs.xorg.libXext
-            pkgs.xorg.libXrandr
-            pkgs.xorg.libXi
+            pkgs.libxcb
+            pkgs.libX11
+            pkgs.libXcursor
+            pkgs.libXinerama
+            pkgs.libXext
+            pkgs.libXrandr
+            pkgs.libXi
             pkgs.libGLU
             pkgs.zlib
 
@@ -163,13 +127,14 @@
 
             pkgs.libxkbcommon
             pkgs.wayland
+            pkgs.wayland-protocols
             pkgs.pixman
             pkgs.dbus-glib
             pkgs.libdrm
             pkgs.libgbm
             pkgs.mesa
 
-            libxcb-errors
+            pkgs.libxcb-errors
             wlroots
           ];
         in
