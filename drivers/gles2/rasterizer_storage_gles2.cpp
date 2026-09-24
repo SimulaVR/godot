@@ -5263,6 +5263,9 @@ void RasterizerStorageGLES2::_render_target_clear(RenderTarget *rt) {
 
 		// clean up our texture
 		Texture *t = texture_owner.get(rt->external.texture);
+		// The external texture is borrowed; its owner deletes the GL object.
+		// Setting tex_id = 0 here prevents the destructor from deleting the underlying GL texture
+		t->tex_id = 0;
 		t->alloc_height = 0;
 		t->alloc_width = 0;
 		t->width = 0;
@@ -5427,6 +5430,9 @@ void RasterizerStorageGLES2::render_target_set_external_texture(RID p_render_tar
 
 			// clean up our texture
 			Texture *t = texture_owner.get(rt->external.texture);
+			// The external texture is borrowed; its owner deletes the GL object.
+			// Setting tex_id = 0 here prevents the destructor from deleting the underlying GL texture
+			t->tex_id = 0;
 			t->alloc_height = 0;
 			t->alloc_width = 0;
 			t->width = 0;
